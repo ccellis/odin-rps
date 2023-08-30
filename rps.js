@@ -15,6 +15,17 @@ function getComputerChoice() {
     return plays[Object.keys(plays)[random_index]];
 }
 
+function getPlayerChoice(prompt_text) {
+    const playerchoice = prompt(prompt_text).toLowerCase();
+    if (playerchoice === "r" || playerchoice === "rock")
+        return plays.rock;
+    if (playerchoice === "p" || playerchoice === "paper")
+        return plays.paper;
+    if (playerchoice === "s" || playerchoice === "scissors")
+        return plays.scissors;
+    return getPlayerChoice(`Sorry, ${playerchoice} is not a valid selection. Please try again`);
+}
+
 function playRound(playerSelection, computerSelection) {
     switch(playerSelection) { //My kingdom for a match statement
         case plays.rock: {
@@ -43,6 +54,5 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-for (let pchoice in plays)
-    for (let cchoice in plays)
-        console.log(`p: ${pchoice} c: ${cchoice} w: ${playRound(pchoice, cchoice)}`);
+while(true)
+    console.log(getPlayerChoice("Testing, testing"));
