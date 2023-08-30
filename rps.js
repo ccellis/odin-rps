@@ -60,9 +60,48 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-console.log(getPlayerChoice());
 
-// function playGame() {
-//     let playerwins = 0;
-//     let computerwins = 0;
-// }
+function playGame() {
+    let playerwins = 0;
+    let computerwins = 0;
+    let resultstring = "";
+    let playerchoice;
+    let computerchoice;
+    let result;
+
+    for (let i = 0; i < 5; ++i) {
+
+        if (i === 0)
+            playerchoice = getPlayerChoice("Rock paper scissors, best of 5. What's your first move?");
+        else
+            playerchoice = getPlayerChoice(`${resultstring} You ${playerwins}, computer ${computerwins}. What's your next move?`);
+
+        computerchoice = getComputerChoice();
+        result = playRound(playerchoice, computerchoice);
+
+        switch (result) {
+            case winner.player:
+                playerwins++;
+                resultstring = `Radical! The computer chose ${computerchoice} to your ${playerchoice}.`;
+                break;
+            case winner.computer:
+                computerwins++;
+                resultstring = `Bummer! The computer chose ${computerchoice} to your ${playerchoice}.`;
+                break;
+            case winner.tie:
+                resultstring = `That's a tie!`;
+                break;
+        }
+        
+        if (playerwins === 3) {
+            prompt(`${resultstring} You win!!`);
+            break;
+        }
+        if (computerwins == 3) {
+            prompt(`${resultstring} You lose!!`);
+            break;
+        }
+    }
+}
+
+playGame();
