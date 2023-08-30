@@ -16,7 +16,13 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice(prompt_text) {
-    const playerchoice = prompt(prompt_text).toLowerCase();
+    let playerchoice;
+    try {
+        playerchoice = prompt(prompt_text).toLowerCase();
+    } catch (typeError) {
+        return getPlayerChoice("Sorry, but the cancel button isn't getting you out of this that easily.");
+    }
+    
     if (playerchoice === "r" || playerchoice === "rock")
         return plays.rock;
     if (playerchoice === "p" || playerchoice === "paper")
@@ -54,5 +60,9 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-while(true)
-    console.log(getPlayerChoice("Testing, testing"));
+console.log(getPlayerChoice());
+
+// function playGame() {
+//     let playerwins = 0;
+//     let computerwins = 0;
+// }
