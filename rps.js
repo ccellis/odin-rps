@@ -60,48 +60,63 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function clickedChoice(e) {
+    const playerchoice = plays[this.dataset.choice];
+    const computerchoice = getComputerChoice();
+    const result = playRound(playerchoice, computerchoice);
 
-function playGame() {
-    let playerwins = 0;
-    let computerwins = 0;
-    let resultstring = "";
-    let playerchoice;
-    let computerchoice;
-    let result;
-
-    for (let i = 0; i < 5; ++i) {
-
-        if (i === 0)
-            playerchoice = getPlayerChoice("Rock paper scissors, best of 5. What's your first move?");
-        else
-            playerchoice = getPlayerChoice(`${resultstring} You ${playerwins}, computer ${computerwins}. What's your next move?`);
-
-        computerchoice = getComputerChoice();
-        result = playRound(playerchoice, computerchoice);
-
-        switch (result) {
-            case winner.player:
-                playerwins++;
-                resultstring = `Radical! The computer chose ${computerchoice} to your ${playerchoice}.`;
-                break;
-            case winner.computer:
-                computerwins++;
-                resultstring = `Bummer! The computer chose ${computerchoice} to your ${playerchoice}.`;
-                break;
-            case winner.tie:
-                resultstring = `That's a tie!`;
-                break;
-        }
-        
-        if (playerwins === 3) {
-            prompt(`${resultstring} You win!!`);
+    let matches = document.querySelector("div.matches");
+    
+    let playeremoji, computeremoji, resultemoji;
+    switch (playerchoice) {
+        case plays.rock: {
+            playeremoji = "✊";
             break;
         }
-        if (computerwins == 3) {
-            prompt(`${resultstring} You lose!!`);
+        case plays.paper: {
+            playeremoji = "✋";
+            break;
+        }
+        case plays.scissors: {
+            playeremoji = "✌️";
             break;
         }
     }
+
+    switch (computerchoice) {
+        case plays.rock: {
+            computeremoji = "🪨";
+            break;
+        }
+        case plays.paper: {
+            computeremoji = "📄";
+            break;
+        }
+        case plays.scissors: {
+            computeremoji = "✂️";
+            break;
+        }
+    }
+
+    switch (result) {
+        case winner.player: {
+            resultemoji = "✅";
+            break;
+        }
+        case winner.computer: {
+            resultemoji = "❌";
+            break;
+        }
+        case winner.tie: {
+            resultemoji = "⚠️";
+            break;
+        }
+    }
+
+    console.log(playeremoji);
+    console.log(computeremoji);
+    console.log(resultemoji);
 }
 
-playGame();
+const options = document.querySelectorAll("div.option");
+options.forEach(option => option.addEventListener("click", clickedChoice));
