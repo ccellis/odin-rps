@@ -113,9 +113,9 @@ function clickedChoice(e) {
         }
     }
 
-    console.log(playeremoji);
-    console.log(computeremoji);
-    console.log(resultemoji);
+    let div_result = document.createElement("div");
+    div_result.textContent = `${playeremoji}${computeremoji}${resultemoji}`;
+    matches.appendChild(div_result);
 }
 
 const options = document.querySelectorAll("div.option");
