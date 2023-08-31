@@ -9,7 +9,7 @@ body {
 .options {
     display: flex;
     font-size: 100px;
-    margin-top: -25px;
+    margin-top: 15px;
     gap: 10px;
     user-select: none;
 }
