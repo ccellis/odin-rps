@@ -15,23 +15,6 @@ function getComputerChoice() {
     return plays[Object.keys(plays)[random_index]];
 }
 
-function getPlayerChoice(prompt_text) {
-    let playerchoice;
-    try {
-        playerchoice = prompt(prompt_text).toLowerCase();
-    } catch (typeError) {
-        return getPlayerChoice("Sorry, but the cancel button isn't getting you out of this that easily.");
-    }
-    
-    if (playerchoice === "r" || playerchoice === "rock")
-        return plays.rock;
-    if (playerchoice === "p" || playerchoice === "paper")
-        return plays.paper;
-    if (playerchoice === "s" || playerchoice === "scissors")
-        return plays.scissors;
-    return getPlayerChoice(`Sorry, ${playerchoice} is not a valid selection. Please try again`);
-}
-
 function playRound(playerSelection, computerSelection) {
     switch(playerSelection) { //My kingdom for a match statement
         case plays.rock: {
