@@ -3,11 +3,21 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    gap: 10px;
 }
 
 .options {
     display: flex;
     font-size: 100px;
+    margin-top: -25px;
+    gap: 10px;
+}
+
+.option {
+    cursor:pointer;
+    background-color: #eee;
+    padding: 0px 10px;
+    border-radius: 10px;
 }
 
 .results {
