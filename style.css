@@ -1,0 +1,23 @@
+body {
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.options {
+    display: flex;
+    font-size: 100px;
+}
+
+.results {
+    border: solid black;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 50px;
+}
+
+hr {
+    border: 2px solid black;
+    margin: 0px -10px;
+}
